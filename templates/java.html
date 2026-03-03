@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Java Course — LearnHub{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="course-header reveal">
+        <div class="badge badge-blue" style="margin-bottom:1rem;">☕ Java Development</div>
+        <h1>Java Programming</h1>
+        <p style="color:var(--muted);margin-top:0.5rem;">Master Java and Object-Oriented Programming step by step.</p>
+        <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;"><span class="badge badge-purple">Intermediate</span><span class="badge badge-green">8 Topics</span></div>
+    </div>
+    <div class="reveal">
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1rem;">Course Topics</h2>
+        <ul class="topics-list">
+            <li>Introduction to Java and JVM</li>
+            <li>Data Types, Variables, and Operators</li>
+            <li>Control Flow and Loops</li>
+            <li>Classes and Objects</li>
+            <li>Inheritance and Polymorphism</li>
+            <li>Interfaces and Abstract Classes</li>
+            <li>Collections Framework</li>
+            <li>Exception Handling</li>
+        </ul>
+        <div style="margin-top:2rem;"><a href="/courses" class="btn btn-outline">← All Courses</a></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Sign Up — LearnHub{% endblock %}
+{% block content %}
+<div class="container" style="display:flex;align-items:center;justify-content:center;min-height:80vh;">
+    <div class="form-card reveal">
+        <div style="font-size:2.5rem;text-align:center;margin-bottom:1.5rem;">🚀</div>
+        <h2>Create Account</h2>
+        <p class="sub">Join thousands of learners already on LearnHub.</p>
+        {% if error %}<div class="error-msg">{{ error }}</div>{% endif %}
+        <form method="post" action="/signup">
+            <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="you@example.com" required></div>
+            <div class="form-group"><label>Password</label><input type="password" name="password" placeholder="Create a strong password" required></div>
+            <button type="submit" class="btn btn-primary" style="width:100%;padding:0.85rem;font-size:1rem;">Create Account →</button>
+        </form>
+        <div class="form-footer">Already have an account? <a href="/login">Sign in</a></div>
+    </div>
+</div>
+{% endblock %}

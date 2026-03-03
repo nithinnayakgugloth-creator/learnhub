@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LearnHub{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+{% if show_particles %}<div id="particles-js"></div>{% endif %}
+{% if show_loader %}<div id="loader"><div class="loader-ring"></div></div>{% endif %}
+
+<nav class="navbar">
+    <div class="logo">LearnHub</div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+        <a href="/courses">Courses</a>
+        {% if session.user_id %}
+            <a href="/dashboard">Dashboard</a>
+            {% if session.role == 'admin' %}<a href="/admin">Admin</a>{% endif %}
+            <a href="/logout" class="btn-nav">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/signup" class="btn-nav">Sign Up</a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="page">{% block content %}{% endblock %}</div>
+
+{% if show_particles %}
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS("particles-js",{particles:{number:{value:50},color:{value:"#38bdf8"},opacity:{value:0.2},size:{value:2.5},line_linked:{enable:true,opacity:0.1,color:"#38bdf8"},move:{speed:1.5}}});
+</script>
+{% endif %}
+
+{% if show_loader %}
+<script>
+window.addEventListener("load",function(){var l=document.getElementById("loader");l.style.opacity="0";setTimeout(()=>l.style.display="none",500);});
+</script>
+{% endif %}
+
+<script>
+function reveal(){document.querySelectorAll(".reveal").forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add("active");});}
+window.addEventListener("scroll",reveal);window.addEventListener("load",reveal);
+function toggleMenu(){document.querySelector(".hamburger").classList.toggle("active");document.getElementById("navLinks").classList.toggle("active");}
+document.querySelectorAll(".nav-links a").forEach(link=>{link.addEventListener("click",()=>{document.querySelector(".hamburger").classList.remove("active");document.getElementById("navLinks").classList.remove("active");});});
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

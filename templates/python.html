@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Python Course — LearnHub{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="course-header reveal">
+        <div class="badge badge-blue" style="margin-bottom:1rem;">🐍 Python Programming</div>
+        <h1>Python Programming</h1>
+        <p style="color:var(--muted);margin-top:0.5rem;">Learn Python from the ground up.</p>
+        <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;"><span class="badge badge-purple">Beginner Friendly</span><span class="badge badge-green">7 Topics</span></div>
+    </div>
+    <div class="reveal" style="margin-bottom:2rem;">
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1rem;">Introduction Video</h2>
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_uQrJ0TkZlc" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="reveal">
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1rem;">Course Topics</h2>
+        <ul class="topics-list">
+            <li>What is Python? History and use cases</li>
+            <li>Variables, Data Types, and Operators</li>
+            <li>Control Flow — if, else, elif</li>
+            <li>Loops — for and while</li>
+            <li>Functions and Scope</li>
+            <li>Object-Oriented Programming (OOP)</li>
+            <li>Working with Files and Modules</li>
+        </ul>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="/quiz" class="btn btn-primary">Take Python Quiz 🧠</a>
+            <a href="/courses" class="btn btn-outline">← All Courses</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

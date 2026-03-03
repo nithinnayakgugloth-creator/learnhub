@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — LearnHub{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="reveal" style="margin-bottom:2.5rem;">
+        <div class="accent-line"></div>
+        <h1 class="section-title">My Dashboard</h1>
+        <p class="section-sub">Welcome back, <strong>{{ email }}</strong> — keep up the great work!</p>
+    </div>
+    <div class="grid-3 reveal" style="margin-bottom:3rem;">
+        <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>Browse Courses</h3>
+            <p>Discover new courses and expand your skill set.</p>
+            <a href="/courses" class="btn btn-outline" style="margin-top:1rem;">Explore →</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Python Quiz</h3>
+            <p>Test your Python knowledge with our interactive quiz.</p>
+            <a href="/quiz" class="btn btn-primary" style="margin-top:1rem;">Take Quiz →</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">🎯</div>
+            <h3>My Progress</h3>
+            <p>You're enrolled in <strong>{{ courses|length }}</strong> course{{ 's' if courses|length != 1 }}.</p>
+            <div style="margin-top:1rem;"><div style="background:rgba(255,255,255,0.05);border-radius:99px;height:6px;"><div style="background:linear-gradient(90deg,#38bdf8,#818cf8);height:6px;border-radius:99px;width:{{ [courses|length * 25, 100]|min }}%;"></div></div></div>
+        </div>
+    </div>
+    <div class="reveal">
+        <h2 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;">My Enrolled Courses</h2>
+        {% if courses %}
+        <div class="grid-3">
+            {% for course in courses %}
+            <div class="card">
+                <div class="card-icon">{{ course.icon }}</div>
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description }}</p>
+                <span class="enrolled-tag" style="margin-top:1rem;">✓ Enrolled</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div style="text-align:center;padding:3rem;background:var(--card);border:1px solid var(--border);border-radius:16px;">
+            <div style="font-size:3rem;margin-bottom:1rem;">📖</div>
+            <p style="color:var(--muted);">You haven't enrolled in any courses yet.</p>
+            <a href="/courses" class="btn btn-primary" style="margin-top:1.5rem;">Browse Courses</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% set show_particles = true %}
+{% set show_loader = true %}
+{% block title %}LearnHub — Learn to Code{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="hero reveal">
+        <div class="badge badge-blue" style="margin-bottom:1.5rem;">✦ Start Learning Today</div>
+        <h1>Master <span class="grad">Programming</span><br>One Lesson at a Time.</h1>
+        <p>LearnHub offers structured courses, interactive quizzes, and a personalized dashboard to help you level up your coding skills — at your own pace.</p>
+        <div class="hero-btns">
+            <a href="/courses" class="btn btn-primary">Browse Courses</a>
+            <a href="/signup" class="btn btn-outline">Create Free Account</a>
+        </div>
+        <div class="hero-features">
+            <div class="hero-feat"><span>📚</span> Expert-crafted Courses</div>
+            <div class="hero-feat"><span>🧠</span> Interactive Quizzes</div>
+            <div class="hero-feat"><span>📊</span> Personal Dashboard</div>
+            <div class="hero-feat"><span>🚀</span> Learn at Your Pace</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel — LearnHub{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="reveal" style="margin-bottom:2rem;">
+        <div class="accent-line"></div>
+        <h1 class="section-title">Admin Panel</h1>
+        <p class="section-sub">Manage courses and view registered users.</p>
+    </div>
+    <div class="stat-grid reveal">
+        <div class="stat-box"><div class="stat-num">{{ users|length }}</div><div class="stat-label">Registered Users</div></div>
+        <div class="stat-box"><div class="stat-num">{{ course_count }}</div><div class="stat-label">Total Courses</div></div>
+        <div class="stat-box"><div class="stat-num">{{ enrollment_count }}</div><div class="stat-label">Enrollments</div></div>
+    </div>
+    <div class="reveal" style="margin-bottom:3rem;">
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.5rem;">Add New Course</h2>
+        <div class="form-card" style="max-width:600px;margin:0;">
+            <form method="post" action="/admin">
+                <div class="form-group"><label>Course Title</label><input type="text" name="title" placeholder="e.g. React for Beginners" required></div>
+                <div class="form-group"><label>Icon (emoji)</label><input type="text" name="icon" placeholder="e.g. ⚛️" maxlength="4"></div>
+                <div class="form-group"><label>Description</label><textarea name="description" placeholder="Brief course description..."></textarea></div>
+                <button type="submit" class="btn btn-primary" style="padding:0.85rem 2rem;">Add Course →</button>
+            </form>
+        </div>
+    </div>
+<div class="reveal">
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.5rem;">Registered Users</h2>
+        <div class="table-responsive" style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+            <table>
+                <thead><tr><th>Email</th><th>Role</th></tr></thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.email }}</td>
+                        <td>{% if user.role == 'admin' %}<span class="badge badge-blue">Admin</span>{% else %}<span class="badge badge-green">User</span>{% endif %}</td>
+                    </tr>
+                    {% else %}
+                    <tr><td colspan="2" style="color:var(--muted);text-align:center;padding:2rem;">No users yet.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

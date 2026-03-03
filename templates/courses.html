@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% set show_particles = true %}
+{% block title %}Courses — LearnHub{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="reveal" style="margin-bottom:1rem;">
+        <div class="accent-line"></div>
+        <h1 class="section-title">All Courses</h1>
+        <p class="section-sub">Choose a course and start building real-world skills today.</p>
+    </div>
+    <div class="grid-3">
+        {% for course in courses %}
+        <div class="card reveal">
+            <div class="card-icon">{{ course.icon }}</div>
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+            <div style="margin-top:1.5rem;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+                {% if course._id|string in enrolled_ids %}
+                    <span class="enrolled-tag">✓ Enrolled</span>
+                {% else %}
+                    <a href="/enroll/{{ course._id }}" class="btn btn-primary">Enroll Free</a>
+                {% endif %}
+                {% if 'python' in course.title|lower %}
+                <a href="/python" class="btn btn-outline">View</a>
+                {% elif 'java' in course.title|lower %}
+                <a href="/java" class="btn btn-outline">View</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

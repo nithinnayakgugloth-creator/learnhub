@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Python Quiz — LearnHub{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="reveal" style="margin-bottom:2rem;">
+        <div class="accent-line"></div>
+        <h1 class="section-title">Python Quiz 🧠</h1>
+        <p class="section-sub">Test your Python fundamentals. Answer all 3 questions and submit.</p>
+    </div>
+    <div class="quiz-box reveal">
+        <form id="quizForm">
+            <div class="question"><p>1. Python is a ____ language.</p>
+                <div class="option"><input type="radio" name="q1" id="q1a" value="correct"><label for="q1a">Interpreted</label></div>
+                <div class="option"><input type="radio" name="q1" id="q1b" value="wrong"><label for="q1b">Compiled</label></div>
+            </div>
+            <div class="question"><p>2. Which keyword defines a function in Python?</p>
+                <div class="option"><input type="radio" name="q2" id="q2a" value="correct"><label for="q2a">def</label></div>
+                <div class="option"><input type="radio" name="q2" id="q2b" value="wrong"><label for="q2b">function</label></div>
+            </div>
+            <div class="question"><p>3. Which symbol is used for single-line comments?</p>
+                <div class="option"><input type="radio" name="q3" id="q3a" value="correct"><label for="q3a">#</label></div>
+                <div class="option"><input type="radio" name="q3" id="q3b" value="wrong"><label for="q3b">//</label></div>
+            </div>
+            <button type="button" onclick="checkAnswers()" class="btn btn-primary" style="margin-top:0.5rem;padding:0.85rem 2rem;font-size:1rem;">Submit Quiz →</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <div style="margin-top:1.5rem;"><a href="/python" class="btn btn-outline">← Back to Python Course</a></div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='quiz.js') }}"></script>{% endblock %}
